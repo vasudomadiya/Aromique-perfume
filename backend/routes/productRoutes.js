@@ -10,7 +10,6 @@ const upload = multer({
     fileFilter: (req, file, callback) => callback(null, ["image/jpeg", "image/png", "image/webp"].includes(file.mimetype)),
 });
 
-
 const router = express.Router();
 //all product display
 router.route("/").get(getProducts).post(protect, admin, upload.array('images', 8), createProduct);
