@@ -1,0 +1,15 @@
+$kind: collection
+name: shopers-mern
+variables:
+  - key: supabase_service_role_api_key_19yt
+    secret: true
+    disabled: false
+  - key: supabase_service_role_api_key_162m
+    secret: true
+    disabled: false
+  - key: supabase_service_role_api_key_02tu
+    secret: true
+    disabled: false
+  - key: json_web_token_02tu
+    secret: true
+    disabled: false

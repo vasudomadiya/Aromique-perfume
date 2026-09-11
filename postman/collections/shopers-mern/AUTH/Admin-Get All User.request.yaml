@@ -1,0 +1,6 @@
+$kind: http-request
+name: Admin-Get All User
+description: ""
+url: http://localhost:5000/api/auth/users
+method: GET
+order: 3869039427886167

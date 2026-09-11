@@ -1,0 +1,30 @@
+$kind: http-request
+name: verify otp with mail
+description: "Generated from cURL: curl --location --request PUT
+  'http://localhost:5000/api/products/PRODUCT_ID' \\\r
+
+  --header 'Authorization: Bearer YOUR_TOKEN' \\\r
+
+  --form 'name=\"Updated iPhone 15\"' \\\r
+
+  --form 'description=\"Updated Apple smartphone\"' \\\r
+
+  --form 'price=\"74999\"' \\\r
+
+  --form 'category=\"Electronics\"' \\\r
+
+  --form 'stock=\"15\"'"
+url: http://localhost:5000/api/auth/verify-email
+method: POST
+headers:
+  Authorization: Bearer YOUR_TOKEN
+body:
+  type: json
+  content: "{\r
+
+    \    \"email\": \"your-othersss-email@gmail.com\",\r
+
+    \    \"otp\": \"759209\"\r
+
+    }"
+order: 6000

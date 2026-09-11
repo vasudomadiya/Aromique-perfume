@@ -1,0 +1,39 @@
+$kind: http-request
+name: Admin-Delete Single product
+description: "Generated from cURL: curl --location --request PUT
+  'http://localhost:5000/api/products/PRODUCT_ID' \\\r
+
+  --header 'Authorization: Bearer YOUR_TOKEN' \\\r
+
+  --form 'name=\"Updated iPhone 15\"' \\\r
+
+  --form 'description=\"Updated Apple smartphone\"' \\\r
+
+  --form 'price=\"74999\"' \\\r
+
+  --form 'category=\"Electronics\"' \\\r
+
+  --form 'stock=\"15\"'"
+url: http://localhost:5000/api/products/6a8c2a2861dbd9f24a468daf
+method: PUT
+headers:
+  Authorization: Bearer YOUR_TOKEN
+body:
+  type: formdata
+  content:
+    - type: text
+      key: name
+      value: Updated iPhone 15
+    - type: text
+      key: description
+      value: Updated Apple smartphone
+    - type: text
+      key: price
+      value: "74999"
+    - type: text
+      key: category
+      value: Electronics
+    - type: text
+      key: stock
+      value: "15"
+order: 7000

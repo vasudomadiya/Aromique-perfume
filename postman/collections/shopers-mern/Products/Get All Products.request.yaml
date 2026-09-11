@@ -1,0 +1,9 @@
+$kind: http-request
+name: Get All Products
+description: ""
+url: http://localhost:5000/api/products/
+method: GET
+body:
+  type: formdata
+  content: []
+order: 2000
