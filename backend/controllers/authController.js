@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendMail");
+const { jwtSecret } = require("../config/env");
 
 
 // ==========================================
@@ -12,7 +13,7 @@ const sendEmail = require("../utils/sendMail");
 const generateToken = (id, tokenVersion = 0) => {
     return jwt.sign(
         { id, tokenVersion },
-        process.env.JWT_SECRET,
+        jwtSecret,
         {
             expiresIn: "7d"
         }

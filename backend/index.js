@@ -3,15 +3,9 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const multer = require("multer");
-const dotenv = require("dotenv");
 const path = require("path");
 const connectDB = require("./config/db");
-
-dotenv.config({ path: path.join(__dirname, ".env") });
-
-if (process.env.NODE_ENV === "production" && (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32 || process.env.JWT_SECRET === "your_jwt_secret_key")) {
-    throw new Error("JWT_SECRET must be a strong random value in production");
-}
+require("./config/env");
 
 connectDB();
 
