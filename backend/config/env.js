@@ -11,11 +11,30 @@ const weakJwtSecrets = new Set([
     "change-me",
 ]);
 
-const jwtSecret = process.env.JWT_SECRET?.trim();
+const defaultDevJwtSecret = "dev-secret-change-me-in-production-32chars";
+
+const normalizeJwtSecret = (value) => value?.trim() || "";
+const isStrongJwtSecret = (value) => {
+    const secret = normalizeJwtSecret(value);
+    if (!secret || secret.length < 32) return false;
+    return !weakJwtSecrets.has(secret.toLowerCase());
+};
+
+const rawJwtSecret = normalizeJwtSecret(process.env.JWT_SECRET);
 const isProduction = process.env.NODE_ENV === "production";
 
-if (isProduction && (!jwtSecret || jwtSecret.length < 32 || weakJwtSecrets.has(jwtSecret.toLowerCase()))) {
+if (!rawJwtSecret && !isProduction) {
+    console.warn("JWT_SECRET is not set. Using the local development fallback secret.");
+}
+
+if (isProduction && !rawJwtSecret) {
+    throw new Error("JWT_SECRET is required in production");
+}
+
+if (isProduction && !isStrongJwtSecret(rawJwtSecret)) {
     throw new Error("JWT_SECRET must be a strong random value in production");
 }
 
-module.exports = { jwtSecret };
+const jwtSecret = rawJwtSecret || defaultDevJwtSecret;
+
+module.exports = { jwtSecret, isStrongJwtSecret };
